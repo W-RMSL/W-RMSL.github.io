@@ -1,0 +1,298 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Anaconda + Pytorch 安装教程 | Frappuccino</title><meta name="author" content="Jinke"><meta name="copyright" content="Jinke"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="安装流程1.安装 Anaconda2.创建 机器学习 环境3.检查显卡，更新驱动4.配置清华云 镜像源5.安装pytorch6.测试7.CUDA核心 1.安装Anaconda![[source&#x2F;_posts&#x2F;工具&#x2F;Anaconda + Pytorch 安装教程&#x2F;a9253c54d8a635a2e7eee56535133ac7_MD5.png]]  https">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Anaconda + Pytorch 安装教程">
+<meta property="og:url" content="https://kingjk.asia/posts/1d80dc37.html">
+<meta property="og:site_name" content="Frappuccino">
+<meta property="og:description" content="安装流程1.安装 Anaconda2.创建 机器学习 环境3.检查显卡，更新驱动4.配置清华云 镜像源5.安装pytorch6.测试7.CUDA核心 1.安装Anaconda![[source&#x2F;_posts&#x2F;工具&#x2F;Anaconda + Pytorch 安装教程&#x2F;a9253c54d8a635a2e7eee56535133ac7_MD5.png]]  https">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://kingjk.asia/img/butterfly-icon.png">
+<meta property="article:published_time" content="2025-09-02T05:18:50.932Z">
+<meta property="article:modified_time" content="2025-09-02T05:27:36.676Z">
+<meta property="article:author" content="Jinke">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://kingjk.asia/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Anaconda + Pytorch 安装教程",
+  "url": "https://kingjk.asia/posts/1d80dc37.html",
+  "image": "https://kingjk.asia/img/butterfly-icon.png",
+  "datePublished": "2025-09-02T05:18:50.932Z",
+  "dateModified": "2025-09-02T05:27:36.676Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Jinke",
+      "url": "https://kingjk.asia/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://kingjk.asia/posts/1d80dc37.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Anaconda + Pytorch 安装教程',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Frappuccino</span></a><a class="nav-page-title" href="/"><span class="site-name">Anaconda + Pytorch 安装教程</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">Anaconda + Pytorch 安装教程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-09-02T05:18:50.932Z" title="发表于 2025-09-02 13:18:50">2025-09-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-09-02T05:27:36.676Z" title="更新于 2025-09-02 13:27:36">2025-09-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="安装流程"><a href="#安装流程" class="headerlink" title="安装流程"></a>安装流程</h2><p>1.安装 Anaconda<br>2.创建 <a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0&spm=1001.2101.3001.7020">机器学习</a> 环境<br>3.检查显卡，更新驱动<br>4.配置清华云 <a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E9%95%9C%E5%83%8F%E6%BA%90&spm=1001.2101.3001.7020">镜像源</a><br>5.安装pytorch<br>6.测试<br>7.CUDA核心</p>
+<h2 id="1-安装Anaconda"><a href="#1-安装Anaconda" class="headerlink" title="1.安装Anaconda"></a>1.安装Anaconda</h2><p>![[source&#x2F;_posts&#x2F;工具&#x2F;Anaconda + Pytorch 安装教程&#x2F;a9253c54d8a635a2e7eee56535133ac7_MD5.png]]</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.anaconda.com/download/">https://www.anaconda.com/download/</a></p>
+</blockquote>
+<p>![[source&#x2F;_posts&#x2F;工具&#x2F;Anaconda + Pytorch 安装教程&#x2F;f8553c3aa2bfbc16a8e99b54ee1bdb52_MD5.png]]<br>![[source&#x2F;_posts&#x2F;工具&#x2F;Anaconda + Pytorch 安装教程&#x2F;47f607078a21dfe9efaaa7ebc766c0b0_MD5.png]]</p>
+<p>![[source&#x2F;_posts&#x2F;工具&#x2F;Anaconda + Pytorch 安装教程&#x2F;f838f724cc8bf410237d7dd0538473ce_MD5.png]]<br>直接默认下一步即可</p>
+<h3 id="装完之后"><a href="#装完之后" class="headerlink" title="装完之后"></a>装完之后</h3><blockquote>
+<p>按win在“所有应用”中找到Anaconda Prompt</p>
+</blockquote>
+<p>![[source&#x2F;_posts&#x2F;工具&#x2F;Anaconda + Pytorch 安装教程&#x2F;a076add73bedfefeb3473bd90e99e708_MD5.png]]<br>![[source&#x2F;_posts&#x2F;工具&#x2F;Anaconda + Pytorch 安装教程&#x2F;745370f67046c33091c1bf7bc9de7de9_MD5.png]]</p>
+<blockquote>
+<p>出现（base）表示成功</p>
+</blockquote>
+<h2 id="2-创建pytorch环境"><a href="#2-创建pytorch环境" class="headerlink" title="2.创建pytorch环境"></a>2.创建pytorch环境</h2><p>![[source&#x2F;_posts&#x2F;工具&#x2F;Anaconda + Pytorch 安装教程&#x2F;05d7111e4701098c51cb75315afae33f_MD5.png]]</p>
+<blockquote>
+<p>这里面输入python可以看到安装的python版本号，我的是python3.10然后输入exit()回车就好。</p>
+</blockquote>
+<p>![[source&#x2F;_posts&#x2F;工具&#x2F;Anaconda + Pytorch 安装教程&#x2F;22d861b1a7465bcda7faaf8a38e7e5bf_MD5.png]]</p>
+<blockquote>
+<p>创建pytorch虚拟环境，pytorch是环境变量的名字，python&#x3D;3.10即是之前自己系统python版本。(注意这里的python版本要和自己的版本相同，我的是python3.10)<br>conda create -n pytorch python&#x3D;3.10</p>
+</blockquote>
+<p>![[source&#x2F;_posts&#x2F;工具&#x2F;Anaconda + Pytorch 安装教程&#x2F;e3d35e1d8378ebeacf43c08277b92fa8_MD5.png]]</p>
+<blockquote>
+<p>到这里按y即可</p>
+</blockquote>
+<p>![[source&#x2F;_posts&#x2F;工具&#x2F;Anaconda + Pytorch 安装教程&#x2F;8ff92edad26dce9efb5fbd638abf78fd_MD5.png]]</p>
+<blockquote>
+<p>出现这个界面就表示成功了</p>
+</blockquote>
+<p>![[source&#x2F;_posts&#x2F;工具&#x2F;Anaconda + Pytorch 安装教程&#x2F;58827241789b7d2f2fbe25ac8bd8d9c7_MD5.png]]</p>
+<blockquote>
+<p>我们输入activate pytorch（pytorch是你定义的这个环境的名字），左边的环境就从base（基本环境），变成了pytorch环境。</p>
+</blockquote>
+<h2 id="3-检查显卡（NVIDIA显卡）（AMD显卡可跳过）"><a href="#3-检查显卡（NVIDIA显卡）（AMD显卡可跳过）" class="headerlink" title="3.检查显卡（NVIDIA显卡）（AMD显卡可跳过）"></a>3.检查显卡（NVIDIA显卡）（AMD显卡可跳过）</h2><p>![[source&#x2F;_posts&#x2F;工具&#x2F;Anaconda + Pytorch 安装教程&#x2F;c6e91fc5cb6d4e242fb4c4b42651f068_MD5.png]]</p>
+<blockquote>
+<p>选择自己的显卡型号（如果有英伟达显卡的话，AMD的显卡不可以实用cuda核心训练，如果是AMD显卡直接用CPU训练就行）</p>
+</blockquote>
+<p>![[source&#x2F;_posts&#x2F;工具&#x2F;Anaconda + Pytorch 安装教程&#x2F;ad699ba7b867d42a99a1effc3a2366b2_MD5.png]]</p>
+<h2 id="4-配置阿里云镜像源"><a href="#4-配置阿里云镜像源" class="headerlink" title="4.配置阿里云镜像源"></a>4.配置阿里云镜像源</h2><p>默认是Anconda国外镜像源，换国内的镜像源下载速度快。</p>
+<h3 id="进入base环境，键入命令"><a href="#进入base环境，键入命令" class="headerlink" title="进入base环境，键入命令"></a>进入base环境，键入命令</h3><blockquote>
+<p>conda config –set show_channel_urls yes</p>
+</blockquote>
+<p>![[source&#x2F;_posts&#x2F;工具&#x2F;Anaconda + Pytorch 安装教程&#x2F;30b050205e2f1fc98b1a449dea361a9a_MD5.png]]</p>
+<blockquote>
+<p>在用户文件中找到这里 并用记事本打开</p>
+</blockquote>
+<p>![[source&#x2F;_posts&#x2F;工具&#x2F;Anaconda + Pytorch 安装教程&#x2F;f20bb6b688905619a4bb651e3d880bda_MD5.png]]</p>
+<blockquote>
+<p>用记事本打开并输入清华云镜像源</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">channels</span>:</span><br><span class="line">    - defaults</span><br><span class="line">  <span class="attr">show_channel_urls</span>: <span class="literal">true</span></span><br><span class="line">  <span class="attr">default_channels</span>:</span><br><span class="line">    - <span class="attr">https</span>:<span class="comment">//mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main</span></span><br><span class="line">    - <span class="attr">https</span>:<span class="comment">//mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r</span></span><br><span class="line">    - <span class="attr">https</span>:<span class="comment">//mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2</span></span><br><span class="line">  <span class="attr">custom_channels</span>:</span><br><span class="line">    conda-<span class="attr">forge</span>: <span class="attr">https</span>:<span class="comment">//mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span></span><br><span class="line">    <span class="attr">msys2</span>: <span class="attr">https</span>:<span class="comment">//mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span></span><br><span class="line">    <span class="attr">bioconda</span>: <span class="attr">https</span>:<span class="comment">//mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span></span><br><span class="line">    <span class="attr">menpo</span>: <span class="attr">https</span>:<span class="comment">//mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span></span><br><span class="line">    <span class="attr">pytorch</span>: <span class="attr">https</span>:<span class="comment">//mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span></span><br><span class="line">    <span class="attr">simpleitk</span>: <span class="attr">https</span>:<span class="comment">//mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span></span><br><span class="line"></span><br><span class="line">javascript123456789101112131415</span><br></pre></td></tr></table></figure>
+
+<p>![[source&#x2F;_posts&#x2F;工具&#x2F;Anaconda + Pytorch 安装教程&#x2F;12edab20c95a9d8fca73d64ab6712aa5_MD5.png]]</p>
+<blockquote>
+<p>ctrl + s保存即可</p>
+</blockquote>
+<p>![[source&#x2F;_posts&#x2F;工具&#x2F;Anaconda + Pytorch 安装教程&#x2F;97ae0d24fe105e53b6f38c736abfc72f_MD5.png]]</p>
+<blockquote>
+<p>在Anaconda prompt 命令窗口运行 conda clean -i 清除索引缓存，保证用的是镜像站提供的索引。然后输入y。</p>
+</blockquote>
+<h2 id="5-安装pytorch"><a href="#5-安装pytorch" class="headerlink" title="5.安装pytorch"></a>5.安装pytorch</h2><p>![[source&#x2F;_posts&#x2F;工具&#x2F;Anaconda + Pytorch 安装教程&#x2F;1fa764391cde7f556bb7130a1d0c2949_MD5.png]]<br>进入网页会自动跳转到对应的系统复制（Run this Command）命令安装即可。</p>
+<p>这个是我的版本对应的命令。</p>
+<blockquote>
+<p>conda install pytorch torchvision torchaudio pytorch-cuda&#x3D;11.8 -c pytorch -c nvidia</p>
+</blockquote>
+<blockquote>
+<p>进入pytorch环境（注意是pytorch环境，不是base环境）</p>
+</blockquote>
+<p>![[source&#x2F;_posts&#x2F;工具&#x2F;Anaconda + Pytorch 安装教程&#x2F;8adf778ebbf1ec8e1a50e80821cdf7b0_MD5.png]]<br>![[source&#x2F;_posts&#x2F;工具&#x2F;Anaconda + Pytorch 安装教程&#x2F;85a3562bdebc5f395784ab255874adce_MD5.png]]</p>
+<blockquote>
+<p>等待安装即可</p>
+</blockquote>
+<p>![[source&#x2F;_posts&#x2F;工具&#x2F;Anaconda + Pytorch 安装教程&#x2F;570a07f17fb6d4c2abbf6ccecc370b6d_MD5.png]]</p>
+<blockquote>
+<p>输入y</p>
+</blockquote>
+<p>![[source&#x2F;_posts&#x2F;工具&#x2F;Anaconda + Pytorch 安装教程&#x2F;fb9e18a8cc1d75059187e1096442380d_MD5.png]]</p>
+<blockquote>
+<p>如果中间窗口停止或者终止，重复步骤5（一定要记得清除索引conda clean -i）</p>
+</blockquote>
+<h2 id="6-测试"><a href="#6-测试" class="headerlink" title="6.测试"></a>6.测试</h2><blockquote>
+<p>等全部装好之后输入python<br>然后输入import torch<br>如果不报错说明没有问题</p>
+</blockquote>
+<p>![[source&#x2F;_posts&#x2F;工具&#x2F;Anaconda + Pytorch 安装教程&#x2F;3774744eb53eac22b972beb20ab61db8_MD5.png]]</p>
+<h3 id="我遇到的错误"><a href="#我遇到的错误" class="headerlink" title="我遇到的错误"></a>我遇到的错误</h3><p>![[source&#x2F;_posts&#x2F;工具&#x2F;Anaconda + Pytorch 安装教程&#x2F;2221f1520a6afccda7f2dfb9b44d6121_MD5.png]]</p>
+<h4 id="1-下载问题"><a href="#1-下载问题" class="headerlink" title="1.下载问题"></a>1.下载问题</h4><p>由于网速较慢经常终止，再次重新下载时会遇到这种情况</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">During</span> handling <span class="keyword">of</span> the above exception, another exception <span class="attr">occurred</span>:</span><br><span class="line"></span><br><span class="line"><span class="title class_">Traceback</span> (most recent call last):</span><br><span class="line">  <span class="title class_">File</span> <span class="string">&quot;C:\Users\MYSTE\anaconda3\lib\site-packages\conda\auxlib\logz.py&quot;</span>, line <span class="number">165</span>, <span class="keyword">in</span> stringify</span><br><span class="line">    <span class="title function_">requests_models_Response_builder</span>(builder, obj)</span><br><span class="line">  <span class="title class_">File</span> <span class="string">&quot;C:\Users\MYSTE\anaconda3\lib\site-packages\conda\auxlib\logz.py&quot;</span>, line <span class="number">141</span>, <span class="keyword">in</span> requests_models_Response_builder</span><br><span class="line">    resp = response_object.<span class="title function_">json</span>()</span><br><span class="line">  <span class="title class_">File</span> <span class="string">&quot;C:\Users\MYSTE\anaconda3\lib\site-packages\requests\models.py&quot;</span>, line <span class="number">975</span>, <span class="keyword">in</span> json</span><br><span class="line">    raise <span class="title class_">RequestsJSONDecodeError</span>(e.<span class="property">msg</span>, e.<span class="property">doc</span>, e.<span class="property">pos</span>)</span><br><span class="line">requests.<span class="property">exceptions</span>.<span class="property">JSONDecodeError</span>: <span class="title class_">Expecting</span> <span class="attr">value</span>: line <span class="number">1</span> column <span class="number">1</span> (char <span class="number">0</span>)</span><br><span class="line"><span class="number">12345678910</span></span><br></pre></td></tr></table></figure>
+
+<p>![[source&#x2F;_posts&#x2F;工具&#x2F;Anaconda + Pytorch 安装教程&#x2F;61b0e720ee5027b540d4196dfe2819b6_MD5.png]]</p>
+<blockquote>
+<p>错误原因:之前下载中断，导致索引关系发生错误</p>
+</blockquote>
+<h5 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h5><p>在pytorch虚拟环境下输入命令</p>
+<blockquote>
+<p>conda clean -i</p>
+</blockquote>
+<p>![[source&#x2F;_posts&#x2F;工具&#x2F;Anaconda + Pytorch 安装教程&#x2F;1320e4664ff05b29354b42072f60f509_MD5.png]]<br>然后按y即可取消索引重新下载pytorch包<br>即重新键入</p>
+<blockquote>
+<p>conda install pytorch torchvision torchaudio pytorch-cuda&#x3D;11.8 -c pytorch -c nvidia</p>
+</blockquote>
+<p>![[source&#x2F;_posts&#x2F;工具&#x2F;Anaconda + Pytorch 安装教程&#x2F;5e99cef6834c979b92fa3efd0761691d_MD5.png]]</p>
+<blockquote>
+<p>我的已经装好了，界面是这样的</p>
+</blockquote>
+<p>![[source&#x2F;_posts&#x2F;工具&#x2F;Anaconda + Pytorch 安装教程&#x2F;59544727f9508a910d656f7dcf2268c7_MD5.png]]</p>
+<blockquote>
+<p>能够import torch不报错即可</p>
+</blockquote>
+<p>![[source&#x2F;_posts&#x2F;工具&#x2F;Anaconda + Pytorch 安装教程&#x2F;a94f95f76effc3769af57955c4ecd551_MD5.png]]</p>
+<h4 id="2-版本问题"><a href="#2-版本问题" class="headerlink" title="2.版本问题"></a>2.版本问题</h4><blockquote>
+<p>如果没有NIVIDA的GPU但是下载的确实GPU版本则会报错导入torch失败</p>
+</blockquote>
+<blockquote>
+<p>报错显示如下：<br>ClobberError: This transaction has incompatible packages due to a shared path.<br>packages: nvidia&#x2F;win-64::cuda-cupti-11.8.87-0, nvidia&#x2F;win-64::cuda-nvtx-11.8.86-0<br>path: ‘metadata_conda_debug.yaml ’</p>
+</blockquote>
+<p>![[source&#x2F;_posts&#x2F;工具&#x2F;Anaconda + Pytorch 安装教程&#x2F;0257ee9a36e9769667a7012932a9c80f_MD5.png]]</p>
+<h5 id="解决办法-1"><a href="#解决办法-1" class="headerlink" title="解决办法"></a>解决办法</h5><blockquote>
+<p>如果是AMD或者Intel显卡或者集成显卡可以直接用CPU版本</p>
+</blockquote>
+<p>![[source&#x2F;_posts&#x2F;工具&#x2F;Anaconda + Pytorch 安装教程&#x2F;fad3188c0d223b1b70ab244a74def7ee_MD5.png]]</p>
+<blockquote>
+<p>我的是:<br>conda install pytorch torchvision torchaudio cpuonly -c pytorch</p>
+</blockquote>
+<h5 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h5><blockquote>
+<p>先解除索引</p>
+</blockquote>
+<p>![[source&#x2F;_posts&#x2F;工具&#x2F;Anaconda + Pytorch 安装教程&#x2F;7d6e2068301ef20681c7c057051f4051_MD5.png]]</p>
+<blockquote>
+<p>输入命令即可<br>conda install pytorch torchvision torchaudio cpuonly -c pytorch</p>
+</blockquote>
+<blockquote>
+<p>安装成功</p>
+</blockquote>
+<p>![[source&#x2F;_posts&#x2F;工具&#x2F;Anaconda + Pytorch 安装教程&#x2F;a94f95f76effc3769af57955c4ecd551_MD5.png]]</p>
+<h2 id="7-CUDA核心"><a href="#7-CUDA核心" class="headerlink" title="7.CUDA核心"></a>7.CUDA核心</h2><h3 id="NVIDIA显卡成功图"><a href="#NVIDIA显卡成功图" class="headerlink" title="NVIDIA显卡成功图"></a>NVIDIA显卡成功图</h3><p>![[source&#x2F;_posts&#x2F;工具&#x2F;Anaconda + Pytorch 安装教程&#x2F;75eadbc0cf269ea6118113fc1e696795_MD5.png]]</p>
+<h3 id="其他显卡安装成功图"><a href="#其他显卡安装成功图" class="headerlink" title="其他显卡安装成功图"></a>其他显卡安装成功图</h3><p>![[source&#x2F;_posts&#x2F;工具&#x2F;Anaconda + Pytorch 安装教程&#x2F;be8e98257c06e0b48087d43f9c507212_MD5.png]]</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://kingjk.asia">Jinke</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://kingjk.asia/posts/1d80dc37.html">https://kingjk.asia/posts/1d80dc37.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://kingjk.asia" target="_blank">Frappuccino</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/posts/02d5730c.html" title="本网站搭建过程"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">本网站搭建过程</div></div><div class="info-2"><div class="info-item-1">这里记录了我搭建整个网站的过程 </div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Jinke</div><div class="author-info-description">这里是一名cs学生的读读写写</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%B5%81%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">安装流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85Anaconda"><span class="toc-number">2.</span> <span class="toc-text">1.安装Anaconda</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A3%85%E5%AE%8C%E4%B9%8B%E5%90%8E"><span class="toc-number">2.1.</span> <span class="toc-text">装完之后</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%88%9B%E5%BB%BApytorch%E7%8E%AF%E5%A2%83"><span class="toc-number">3.</span> <span class="toc-text">2.创建pytorch环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%A3%80%E6%9F%A5%E6%98%BE%E5%8D%A1%EF%BC%88NVIDIA%E6%98%BE%E5%8D%A1%EF%BC%89%EF%BC%88AMD%E6%98%BE%E5%8D%A1%E5%8F%AF%E8%B7%B3%E8%BF%87%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">3.检查显卡（NVIDIA显卡）（AMD显卡可跳过）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E9%85%8D%E7%BD%AE%E9%98%BF%E9%87%8C%E4%BA%91%E9%95%9C%E5%83%8F%E6%BA%90"><span class="toc-number">5.</span> <span class="toc-text">4.配置阿里云镜像源</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5base%E7%8E%AF%E5%A2%83%EF%BC%8C%E9%94%AE%E5%85%A5%E5%91%BD%E4%BB%A4"><span class="toc-number">5.1.</span> <span class="toc-text">进入base环境，键入命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%AE%89%E8%A3%85pytorch"><span class="toc-number">6.</span> <span class="toc-text">5.安装pytorch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%B5%8B%E8%AF%95"><span class="toc-number">7.</span> <span class="toc-text">6.测试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%91%E9%81%87%E5%88%B0%E7%9A%84%E9%94%99%E8%AF%AF"><span class="toc-number">7.1.</span> <span class="toc-text">我遇到的错误</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%B8%8B%E8%BD%BD%E9%97%AE%E9%A2%98"><span class="toc-number">7.1.1.</span> <span class="toc-text">1.下载问题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="toc-number">7.1.1.1.</span> <span class="toc-text">解决办法</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%89%88%E6%9C%AC%E9%97%AE%E9%A2%98"><span class="toc-number">7.1.2.</span> <span class="toc-text">2.版本问题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95-1"><span class="toc-number">7.1.2.1.</span> <span class="toc-text">解决办法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%96%B9%E6%B3%95"><span class="toc-number">7.1.2.2.</span> <span class="toc-text">安装方法</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-CUDA%E6%A0%B8%E5%BF%83"><span class="toc-number">8.</span> <span class="toc-text">7.CUDA核心</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#NVIDIA%E6%98%BE%E5%8D%A1%E6%88%90%E5%8A%9F%E5%9B%BE"><span class="toc-number">8.1.</span> <span class="toc-text">NVIDIA显卡成功图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E6%98%BE%E5%8D%A1%E5%AE%89%E8%A3%85%E6%88%90%E5%8A%9F%E5%9B%BE"><span class="toc-number">8.2.</span> <span class="toc-text">其他显卡安装成功图</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/1d80dc37.html" title="Anaconda + Pytorch 安装教程">Anaconda + Pytorch 安装教程</a><time datetime="2025-09-02T05:18:50.932Z" title="发表于 2025-09-02 13:18:50">2025-09-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/02d5730c.html" title="本网站搭建过程">本网站搭建过程</a><time datetime="2025-07-09T06:26:22.000Z" title="发表于 2025-07-09 14:26:22">2025-07-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By Jinke</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
