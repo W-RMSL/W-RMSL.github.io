@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Jupyter Notebook入门教程 | Frappuccino</title><meta name="author" content="KE"><meta name="copyright" content="KE"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Jupyter Notebook入门教程1. 安装与配置1.1 Jupyter参考网址Jupyter官方网址 IPython官方网址  配套notebook文件下载 ，下载解压notebook.zip文件，在notebook目录下打开jupyter notebook。  1.2 安装Jupyter 打开Anaconda的命令提示窗口，创建新的虚拟环境   # 将env_name替换成你的自定义环境">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Jupyter Notebook入门教程 | Frappuccino</title><meta name="author" content="KE"><meta name="copyright" content="KE"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Jupyter Notebook入门教程1. 安装与配置1.1 Jupyter参考网址Jupyter官方网址 IPython官方网址  配套notebook文件下载 ，下载解压notebook.zip文件，在notebook目录下打开jupyter notebook。  1.2 安装Jupyter 打开Anaconda的命令提示窗口，创建新的虚拟环境  1conda create -n env_n">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Jupyter Notebook入门教程">
 <meta property="og:url" content="https://kingjk.asia/posts/6e4fa609.html">
 <meta property="og:site_name" content="Frappuccino">
-<meta property="og:description" content="Jupyter Notebook入门教程1. 安装与配置1.1 Jupyter参考网址Jupyter官方网址 IPython官方网址  配套notebook文件下载 ，下载解压notebook.zip文件，在notebook目录下打开jupyter notebook。  1.2 安装Jupyter 打开Anaconda的命令提示窗口，创建新的虚拟环境   # 将env_name替换成你的自定义环境">
+<meta property="og:description" content="Jupyter Notebook入门教程1. 安装与配置1.1 Jupyter参考网址Jupyter官方网址 IPython官方网址  配套notebook文件下载 ，下载解压notebook.zip文件，在notebook目录下打开jupyter notebook。  1.2 安装Jupyter 打开Anaconda的命令提示窗口，创建新的虚拟环境  1conda create -n env_n">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://kingjk.asia/img/butterfly-icon.png">
 <meta property="article:published_time" content="2025-09-03T13:48:17.000Z">
@@ -164,29 +164,29 @@
 <p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1RC5XczQkKGRbfRfXfHnzRA?pwd=1111">配套notebook文件下载</a> ，下载解压notebook.zip文件，在notebook目录下打开jupyter notebook。</p>
 </blockquote>
 <h4 id="1-2-安装Jupyter"><a href="#1-2-安装Jupyter" class="headerlink" title="1.2 安装Jupyter"></a>1.2 安装Jupyter</h4><ul>
-<li>打开Anaconda的命令提示窗口，创建新的虚拟环境<ul>
-<li><pre><code>  # 将env_name替换成你的自定义环境名称
-  conda create -n env_name python=3.8 scikit-image=0.18 -y
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">![](/posts/6e4fa609/image-20250903215107797.png "image-20220531145543128")</span><br><span class="line">- ```</span><br><span class="line">	# 查看新环境是否已经创建成功</span><br><span class="line">	conda env list</span><br></pre></td></tr></table></figure>
+<li>打开Anaconda的命令提示窗口，创建新的虚拟环境  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create -n env_name python=3.8 scikit-image=0.18 -y</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p> <img src="/posts/6e4fa609/image-20250903215107797.png" title="image-20220531145543128"></p>
+<pre><code><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 查看新环境是否已经创建成功</span><br><span class="line">conda env list</span><br></pre></td></tr></table></figure>
 </code></pre>
-</li>
-</ul>
-</li>
-</ul>
 <p> <img src="/posts/6e4fa609/image-20250903215107824.png" title="image-20220531145939836"></p>
 <ul>
-<li>安装Jupyter<ul>
-<li><pre><code>  # 进入新创建的环境
-  conda activate env_name
-  # 安装Jupyter
-  pip install jupyter
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> ![](/posts/6e4fa609/image-20250903215107845.png "image-20220531150241632")</span><br><span class="line">	- 输入jupyter notebook即可在浏览器中自动打开notebook</span><br><span class="line"> ![](/posts/6e4fa609/image-20250903215107861.png "image-20220531150716817")</span><br><span class="line">	- 如果我们想新建一个notebook，并且使用当前新建的环境时，我们发现没有当前新建环境的 [IPython](https://so.csdn.net/so/search?q=IPython&amp;spm=1001.2101.3001.7020) 内核：</span><br><span class="line">![](/posts/6e4fa609/image-20250903215107877.png "image-20220531151013639")</span><br><span class="line">- 在当前环境下建立新的IPython内核</span><br><span class="line">	- ```</span><br><span class="line">		# 安装ipykernel</span><br><span class="line">		pip install ipykernel</span><br><span class="line">		# 生成ipykernel的配置文件</span><br><span class="line">		python -m ipykernel install --name env_name</span><br><span class="line">		# 查看已有的kernel</span><br><span class="line">		jupyter kernelspec list</span><br></pre></td></tr></table></figure>
+<li>安装Jupyter  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 进入新创建的环境</span><br><span class="line">conda activate env_name</span><br><span class="line"># 安装Jupyter</span><br><span class="line">pip install jupyter</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p> <img src="/posts/6e4fa609/image-20250903215107845.png" title="image-20220531150241632"></p>
+<pre><code>- 输入jupyter notebook即可在浏览器中自动打开notebook
 </code></pre>
-</li>
+<p> <img src="/posts/6e4fa609/image-20250903215107861.png" title="image-20220531150716817"></p>
+<pre><code>- 如果我们想新建一个notebook，并且使用当前新建的环境时，我们发现没有当前新建环境的 [IPython](https://so.csdn.net/so/search?q=IPython&amp;spm=1001.2101.3001.7020) 内核：
+</code></pre>
+<p><img src="/posts/6e4fa609/image-20250903215107877.png" title="image-20220531151013639"></p>
+<ul>
+<li>在当前环境下建立新的IPython内核  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 安装ipykernel</span><br><span class="line">pip install ipykernel</span><br><span class="line"># 生成ipykernel的配置文件</span><br><span class="line">python -m ipykernel install --name env_name</span><br><span class="line"># 查看已有的kernel</span><br><span class="line">jupyter kernelspec list</span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
-</ul>
-<p> <img src="/posts/6e4fa609/image-20250903215107904.png" title="image-20220531152017796"><br>    - 再次启动jupyter notebook发现已经有了当前环境下的IPython内核了<br><img src="/posts/6e4fa609/image-20250903215107924.png" title="image-20220531152203637"></p>
+<p><img src="/posts/6e4fa609/image-20250903215107904.png" title="image-20220531152017796"></p>
+<pre><code>- 再次启动jupyter notebook发现已经有了当前环境下的IPython内核了
+</code></pre>
+<p><img src="/posts/6e4fa609/image-20250903215107924.png" title="image-20220531152203637"></p>
 <h4 id="1-3-安装扩展"><a href="#1-3-安装扩展" class="headerlink" title="1.3 安装扩展"></a>1.3 安装扩展</h4><p><a target="_blank" rel="noopener" href="https://jupyter-contrib-nbextensions.readthedocs.io/en/latest/">扩展官方文档</a></p>
 <p><a target="_blank" rel="noopener" href="https://github.com/ipython-contrib/jupyter_contrib_nbextensions">Github地址</a></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 安装扩展包</span><br><span class="line">pip install jupyter_contrib_nbextensions</span><br><span class="line"># 安装 javascript和css文件</span><br><span class="line">jupyter contrib nbextension install --user</span><br><span class="line"># 启动juputer notebook</span><br></pre></td></tr></table></figure>
